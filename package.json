@@ -1,7 +1,7 @@
 {
-  "name": "marked-extension-template",
+  "name": "marked-gfm-heading-id",
   "version": "0.0.0",
-  "description": "marked extension template",
+  "description": "marked GFM heading ids",
   "main": "src/index.js",
   "keywords": [
     "marked",
@@ -15,18 +15,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/markedjs/marked-extension-template.git"
+    "url": "git+https://github.com/markedjs/marked-gfm-heading-id.git"
   },
   "author": "Tony Brix <Tony@Brix.ninja> (https://Tony.Brix.ninja)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/markedjs/marked-extension-template/issues"
+    "url": "https://github.com/markedjs/marked-gfm-heading-id/issues"
   },
-  "homepage": "https://github.com/markedjs/marked-extension-template#readme",
+  "homepage": "https://github.com/markedjs/marked-gfm-heading-id#readme",
   "peerDependencies": {
     "marked": "^1.0.0 || ^2.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "github-slugger": "^1.3.0"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",

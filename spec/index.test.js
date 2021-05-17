@@ -1,18 +1,55 @@
 const marked = require('marked');
-const thisExtension = require('../');
+const gfmHeadingId = require('../');
 
-describe('this-extension', () => {
+describe('marked-gfm-heading-id', () => {
   beforeEach(() => {
     marked.setOptions(marked.getDefaults());
   });
 
   test('no options', () => {
-    marked.use(thisExtension());
-    expect(marked('example markdown')).toBe('<p>example html</p>\n');
+    marked.use(gfmHeadingId());
+    const markdown = `
+# heading
+
+# heading
+`.trimStart();
+
+    const html = `
+<h1 id="heading">heading</h1>
+<h1 id="heading-1">heading</h1>
+`.trimStart();
+    expect(marked(markdown)).toBe(html);
   });
 
-  test('markdown not using this extension', () => {
-    marked.use(thisExtension());
-    expect(marked('not example markdown')).not.toBe('<p>example html</p>\n');
+  test('prefix', () => {
+    marked.use(gfmHeadingId({ prefix: 'my-prefix-' }));
+    const markdown = `
+# heading
+
+# heading
+`.trimStart();
+
+    const html = `
+<h1 id="my-prefix-heading">heading</h1>
+<h1 id="my-prefix-heading-1">heading</h1>
+`.trimStart();
+    expect(marked(markdown)).toBe(html);
+  });
+
+  test('reset', () => {
+    marked.use(gfmHeadingId());
+    const markdown = `
+# heading
+
+# heading
+`.trimStart();
+
+    const html = `
+<h1 id="heading">heading</h1>
+<h1 id="heading-1">heading</h1>
+`.trimStart();
+    expect(marked(markdown)).toBe(html);
+    gfmHeadingId.reset();
+    expect(marked(markdown)).toBe(html);
   });
 });

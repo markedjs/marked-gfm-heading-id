@@ -1,19 +1,20 @@
-module.exports = function(options = {}) {
-  // extension code here
+const GithubSlugger = require('github-slugger');
+let slugger;
+
+function reset() {
+  slugger = new GithubSlugger();
+}
+
+module.exports = ({ prefix = '' } = {}) => {
+  reset();
 
   return {
-    tokenizer: {
-      paragraph(src) {
-        if (src !== 'example markdown') {
-          return false;
-        }
-
-        return {
-          type: 'paragraph',
-          raw: src,
-          text: 'example html'
-        };
+    renderer: {
+      heading(text, level, raw) {
+        return `<h${level} id="${prefix}${slugger.slug(raw)}">${text}</h${level}>\n`;
       }
     }
   };
 };
+
+module.exports.reset = reset;

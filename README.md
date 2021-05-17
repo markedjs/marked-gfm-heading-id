@@ -1,40 +1,41 @@
-<!-- The character `|` around a string denotes a place in this markdown file that needs to be changed for each extension. -->
-<!-- You may also delete any comments you don't need anymore. -->
+# marked-gfm-heading-id
 
-# TODO:
-
-- [ ] Replace information in `/README.md`
-- [ ] Replace information in `/package.json`
-- [ ] Write extension in `/src/index.js`
-- [ ] Write tests in `/spec/index.test.js`
-- [ ] Uncomment release in `/.github/workflows/main.yml`
-
-<!-- Delete this line and above -->
-
-# marked-|this-extension|
-<!-- Description -->
+Add ids to headings like GitHub.
 
 # Usage
-<!-- Show most examples of how to use this extension -->
 
 ```js
 const marked = require("marked");
-const |thisExtension| = require("marked-|this-extension|");
+const gfmHeadingId = require("marked-gfm-heading-id");
 
 // or ES Module script
 // import marked from "https://cdn.jsdelivr.net/gh/markedjs/marked/lib/marked.esm.js";
-// import this extension from "https://cdn.jsdelivr.net/gh/UziTech/marked-|this-extension|/lib/index.mjs";
+// import this extension from "https://cdn.jsdelivr.net/gh/UziTech/marked-gfm-heading-id/lib/index.mjs";
 
 const options = {
-	// |default options|
+	prefix: "my-prefix-",
 };
 
-marked.use(|thisExtension|(options));
+marked.use(gfmHeadingId(options));
 
-marked("|example markdown|");
-// <p>|example html|</p>
+marked("# heading");
+// <h1 id="my-prefix-heading">heading</h1>
+```
+
+## `reset`
+
+If you want to reset the heading list bewteen `marked` calls you must call `reset`.
+
+```js
+marked.use(gfmHeadingId());
+
+marked("# heading\n\n# heading");
+gfmHeadingId.reset();
+marked("# heading\n\n# heading");
 ```
 
 ## `options`
 
-<!-- If there are no options you can delete this section -->
+| option |  type  | default | description                     |
+|--------|--------|---------|:--------------------------------|
+| prefix | string |  `""`   | A string to prepend to all ids. |
