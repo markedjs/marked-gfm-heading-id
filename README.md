@@ -24,7 +24,7 @@ marked("# heading");
 
 ## `reset`
 
-If you want to reset the heading list bewteen `marked` calls you must call `reset`.
+If you want to reset the heading list between `marked` calls you must call `reset`.
 
 ```js
 marked.use(gfmHeadingId());
