@@ -43,7 +43,7 @@
     "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "jest-cli": "^26.6.3",
+    "jest-cli": "^27.0.3",
     "marked": "^2.0.5",
     "rollup": "^2.50.5",
     "semantic-release": "^17.4.3"
