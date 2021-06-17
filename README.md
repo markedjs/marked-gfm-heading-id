@@ -10,7 +10,7 @@ const gfmHeadingId = require("marked-gfm-heading-id");
 
 // or ES Module script
 // import marked from "https://cdn.jsdelivr.net/gh/markedjs/marked/lib/marked.esm.js";
-// import this extension from "https://cdn.jsdelivr.net/gh/UziTech/marked-gfm-heading-id/lib/index.mjs";
+// import gfmHeadingId from "https://cdn.jsdelivr.net/gh/UziTech/marked-gfm-heading-id/lib/index.mjs";
 
 const options = {
 	prefix: "my-prefix-",
