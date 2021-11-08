@@ -1,4 +1,4 @@
-const marked = require('marked');
+const { marked } = require('marked/lib/marked.cjs');
 const gfmHeadingId = require('../');
 
 describe('marked-gfm-heading-id', () => {
