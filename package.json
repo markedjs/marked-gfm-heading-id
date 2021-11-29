@@ -46,6 +46,6 @@
     "jest-cli": "^27.4.0",
     "marked": "^4.0.4",
     "rollup": "^2.60.1",
-    "semantic-release": "^18.0.0"
+    "semantic-release": "^18.0.1"
   }
 }
