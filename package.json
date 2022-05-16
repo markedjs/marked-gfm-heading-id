@@ -45,7 +45,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "jest-cli": "^28.1.0",
     "marked": "^4.0.15",
-    "rollup": "^2.72.1",
+    "rollup": "^2.73.0",
     "semantic-release": "^19.0.2"
   }
 }
