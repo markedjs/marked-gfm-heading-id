@@ -1,5 +1,5 @@
-const { marked } = require('marked');
-const gfmHeadingId = require('../');
+import { marked } from 'marked';
+import { gfmHeadingId, reset } from '../src/index.js';
 
 describe('marked-gfm-heading-id', () => {
   beforeEach(() => {
@@ -49,7 +49,7 @@ describe('marked-gfm-heading-id', () => {
 <h1 id="heading-1">heading</h1>
 `.trimStart();
     expect(marked(markdown)).toBe(html);
-    gfmHeadingId.reset();
+    reset();
     expect(marked(markdown)).toBe(html);
   });
 });
