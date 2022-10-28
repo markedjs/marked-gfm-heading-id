@@ -5,12 +5,12 @@ Add ids to headings like GitHub.
 # Usage
 
 ```js
-const marked = require("marked");
-const gfmHeadingId = require("marked-gfm-heading-id");
+import { marked } from "marked";
+import { gfmHeadingId } from "marked-gfm-heading-id";
 
 // or ES Module script
-// import marked from "https://cdn.jsdelivr.net/gh/markedjs/marked/lib/marked.esm.js";
-// import gfmHeadingId from "https://cdn.jsdelivr.net/gh/UziTech/marked-gfm-heading-id/lib/index.mjs";
+// import { marked } from "https://cdn.jsdelivr.net/gh/markedjs/marked/src/marked.js";
+// import { gfmHeadingId } from "https://cdn.jsdelivr.net/gh/UziTech/marked-gfm-heading-id/src/index.js";
 
 const options = {
 	prefix: "my-prefix-",
@@ -27,10 +27,13 @@ marked("# heading");
 If you want to reset the heading list between `marked` calls you must call `reset`.
 
 ```js
+import { marked } from "marked";
+import { gfmHeadingId, reset } from "marked-gfm-heading-id";
+
 marked.use(gfmHeadingId());
 
 marked("# heading\n\n# heading");
-gfmHeadingId.reset();
+reset();
 marked("# heading\n\n# heading");
 ```
 
