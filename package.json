@@ -24,7 +24,7 @@
     "test": "jest --verbose",
     "test:cover": "jest --coverage",
     "lint": "eslint .",
-    "build": "rollup -c rollup.config.cjs"
+    "build": "rollup -c rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -45,7 +45,6 @@
   "devDependencies": {
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
-    "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
