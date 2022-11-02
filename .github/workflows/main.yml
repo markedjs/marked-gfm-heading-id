@@ -48,8 +48,18 @@ jobs:
       - name: Lint ✨
         run: npm run lint
 
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build 🗜️
+        run: npm run build
+
   Release:
-    needs: [Test, Coverage, Lint]
+    needs: [Test, Coverage, Lint, Build]
     if: |
       github.ref == 'refs/heads/main' &&
       github.event.repository.fork == false
