@@ -1,14 +1,14 @@
 import GithubSlugger from 'github-slugger';
 let slugger;
 
-export function reset() {
-  slugger = new GithubSlugger();
-}
-
 export function gfmHeadingId({ prefix = '' } = {}) {
-  reset();
-
   return {
+    hooks: {
+      preprocess(src) {
+        slugger = new GithubSlugger();
+        return src;
+      }
+    },
     renderer: {
       heading(text, level, raw) {
         raw = raw.toLowerCase().trim().replace(/<[!\/a-z].*?>/ig, '');

@@ -1,5 +1,5 @@
 import { marked } from 'marked';
-import { gfmHeadingId, reset } from '../src/index.js';
+import { gfmHeadingId } from '../src/index.js';
 
 describe('marked-gfm-heading-id', () => {
   beforeEach(() => {
@@ -12,13 +12,13 @@ describe('marked-gfm-heading-id', () => {
 # heading
 
 # heading
-`.trimStart();
+`;
 
-    const html = `
-<h1 id="heading">heading</h1>
+    expect(marked(markdown)).toMatchInlineSnapshot(`
+"<h1 id="heading">heading</h1>
 <h1 id="heading-1">heading</h1>
-`.trimStart();
-    expect(marked(markdown)).toBe(html);
+"
+`);
   });
 
   test('prefix', () => {
@@ -27,30 +27,33 @@ describe('marked-gfm-heading-id', () => {
 # heading
 
 # heading
-`.trimStart();
+`;
 
-    const html = `
-<h1 id="my-prefix-heading">heading</h1>
+    expect(marked(markdown)).toMatchInlineSnapshot(`
+"<h1 id="my-prefix-heading">heading</h1>
 <h1 id="my-prefix-heading-1">heading</h1>
-`.trimStart();
-    expect(marked(markdown)).toBe(html);
+"
+`);
   });
 
-  test('reset', () => {
+  test('reset for new marked call', () => {
     marked.use(gfmHeadingId());
     const markdown = `
 # heading
 
 # heading
-`.trimStart();
+`;
 
-    const html = `
-<h1 id="heading">heading</h1>
+    expect(marked(markdown)).toMatchInlineSnapshot(`
+"<h1 id="heading">heading</h1>
 <h1 id="heading-1">heading</h1>
-`.trimStart();
-    expect(marked(markdown)).toBe(html);
-    reset();
-    expect(marked(markdown)).toBe(html);
+"
+`);
+    expect(marked(markdown)).toMatchInlineSnapshot(`
+"<h1 id="heading">heading</h1>
+<h1 id="heading-1">heading</h1>
+"
+`);
   });
 
   test('weird headings', () => {
@@ -65,17 +68,17 @@ describe('marked-gfm-heading-id', () => {
 # Html in <em>header</em>
 
 # just <tags>test
-  
+
 # just <tags>test 2</tags>
-  
+
 # just <tags> test 2 spaces </tags>
-  
+
 # just <tags>test 3</any>
-  
+
 # just <tags>test 4<any>
-  
+
 # just <non tags
-  
+
 # just <tags with>spaces
 
 # just <#$%> weird chars
@@ -91,10 +94,10 @@ describe('marked-gfm-heading-id', () => {
 # Hello **world!**
 
 # <samp>Hello <ins>world!</ins></samp>
-`.trimStart();
+`;
 
-    const html = `
-<h1 id="foo-1">foo 1</h1>
+    expect(marked(markdown)).toMatchInlineSnapshot(`
+"<h1 id="foo-1">foo 1</h1>
 <h1 id="foo">foo</h1>
 <h1 id="foo-2">foo</h1>
 <h1 id="html-in-header">Html in <em>header</em></h1>
@@ -112,7 +115,7 @@ describe('marked-gfm-heading-id', () => {
 <h1 id="comment-">comment <!-- inside --></h1>
 <h1 id="hello-world">Hello <strong>world!</strong></h1>
 <h1 id="hello-world-1"><samp>Hello <ins>world!</ins></samp></h1>
-`.trimStart();
-    expect(marked(markdown)).toBe(html);
+"
+`);
   });
 });
