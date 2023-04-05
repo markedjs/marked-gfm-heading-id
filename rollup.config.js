@@ -4,7 +4,7 @@ export default [
   {
     input: 'src/index.js',
     output: {
-      name: 'markedBidi',
+      name: 'markedGfmHeadingId',
       file: 'lib/index.umd.js',
       format: 'umd'
     },
