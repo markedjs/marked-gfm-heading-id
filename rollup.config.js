@@ -16,6 +16,6 @@ export default [
       file: 'lib/index.cjs',
       format: 'cjs'
     },
-    external: ['github-slugger']
+    plugins: [nodeResolve()]
   }
 ];
