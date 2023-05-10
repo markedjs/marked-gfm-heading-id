@@ -3,6 +3,7 @@ let slugger;
 
 export function gfmHeadingId({ prefix = '' } = {}) {
   return {
+    headerIds: false, // prevent deprecation warning; remove this once headerIds option is removed
     hooks: {
       preprocess(src) {
         slugger = new GithubSlugger();
