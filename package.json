@@ -6,6 +6,7 @@
   "module": "./src/index.js",
   "browser": "./lib/index.umd.js",
   "type": "module",
+  "types": "./src/index.d.ts",
   "files": [
     "lib/",
     "src/"
@@ -52,6 +53,7 @@
     "@semantic-release/github": "^8.1.0",
     "@semantic-release/npm": "^10.0.3",
     "@semantic-release/release-notes-generator": "^11.0.2",
+    "@types/marked": "^5.0.0",
     "babel-jest": "^29.5.0",
     "eslint": "^8.41.0",
     "eslint-config-standard": "^17.1.0",
