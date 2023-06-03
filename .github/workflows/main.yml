@@ -103,7 +103,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release --dry-run --no-ci
+        run: npx semantic-release --dry-run --no-ci --branches "${GITHUB_REF#refs/heads/}"
 
   Release:
     needs: [Test, Coverage, Lint, Build, TestTypes]
