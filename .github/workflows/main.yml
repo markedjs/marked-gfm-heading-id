@@ -105,7 +105,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo npx semantic-release --dry-run --branches "${GITHUB_REF#refs/pull/}"
-          npx semantic-release --dry-run --branches ["${GITHUB_REF#refs/pull/}"]
+          npx semantic-release --dry-run --branches ["${GITHUB_REF#refs/pull/}"] --no-ci
 
   Release:
     needs: [Test, Coverage, Lint, Build, TestTypes]
