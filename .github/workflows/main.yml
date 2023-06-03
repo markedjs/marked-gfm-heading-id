@@ -104,10 +104,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          echo $GITHUB_REF
-          echo "$GITHUB_REF"
-          echo "${GITHUB_REF#refs/heads/}"
-          npx semantic-release --dry-run --no-ci --branches "${GITHUB_REF#refs/heads/}"
+          echo $GITHUB_HEAD_REF
+          echo "$GITHUB_HEAD_REF"
+          echo "${GITHUB_HEAD_REF#refs/heads/}"
+          npx semantic-release --dry-run --no-ci --branches $GITHUB_HEAD_REF
 
   Release:
     needs: [Test, Coverage, Lint, Build, TestTypes]
