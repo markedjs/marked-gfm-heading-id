@@ -106,8 +106,8 @@ jobs:
         run: |
           echo $GITHUB_HEAD_REF
           echo "$GITHUB_HEAD_REF"
-          echo "${GITHUB_HEAD_REF#refs/heads/}"
-          npx semantic-release --dry-run --no-ci --branches $GITHUB_HEAD_REF
+          echo "${GITHUB_REF#refs/pull/}"
+          npx semantic-release --dry-run --no-ci --branches "${GITHUB_REF#refs/pull/}"
 
   Release:
     needs: [Test, Coverage, Lint, Build, TestTypes]
