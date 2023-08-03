@@ -1,4 +1,4 @@
-import type { marked } from "marked"
+import type { MarkedExtension, marked } from "marked"
 
 /** Options for configuring marked-gfm-heading-id extension */
 interface GfmHeadingIdOptions {
@@ -12,4 +12,4 @@ interface GfmHeadingIdOptions {
  * @param options Options for the extension
  * @returns A {@link marked.MarkedExtension | MarkedExtension} to be passed to {@link marked.use | `marked.use()`}
  */
-export function gfmHeadingId(options?: GfmHeadingIdOptions): marked.MarkedExtension;
+export function gfmHeadingId(options?: GfmHeadingIdOptions): MarkedExtension;
