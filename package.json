@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/markedjs/marked-gfm-heading-id#readme",
   "peerDependencies": {
-    "marked": ">=4 <9"
+    "marked": ">=4 <10"
   },
   "dependencies": {
     "github-slugger": "^2.0.0"
@@ -61,7 +61,7 @@
     "eslint-plugin-n": "^16.0.2",
     "eslint-plugin-promise": "^6.1.1",
     "jest-cli": "^29.6.4",
-    "marked": "^8.0.0",
+    "marked": "^9.0.0",
     "rollup": "^3.28.1",
     "semantic-release": "^21.1.1",
     "tsd": "^0.29.0"
