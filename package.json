@@ -1,6 +1,6 @@
 {
   "name": "marked-gfm-heading-id",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "marked GFM heading ids",
   "main": "./lib/index.cjs",
   "module": "./src/index.js",
