@@ -1,5 +1,5 @@
 import { marked } from 'marked';
-import { gfmHeadingId } from '../src/index.js';
+import { getHeadingList, gfmHeadingId } from '../src/index.js';
 
 describe('marked-gfm-heading-id', () => {
   beforeEach(() => {
@@ -57,7 +57,16 @@ describe('marked-gfm-heading-id', () => {
   });
 
   test('weird headings', () => {
-    marked.use(gfmHeadingId());
+    let headings = [];
+    marked.use(gfmHeadingId(), {
+      hooks: {
+        postprocess(html) {
+          headings = getHeadingList();
+          return html;
+        }
+      }
+    });
+
     const markdown = `
 # foo 1
 
@@ -117,5 +126,27 @@ describe('marked-gfm-heading-id', () => {
 <h1 id="hello-world-1"><samp>Hello <ins>world!</ins></samp></h1>
 "
 `);
+
+    expect(headings.length).toBe(18);
+    expect(headings[0].id).toBe('foo-1');
+    expect(headings[1].id).toBe('foo');
+    expect(headings[2].id).toBe('foo-2');
+    expect(headings[3].id).toBe('html-in-header');
+    expect(headings[4].id).toBe('just-test');
+    expect(headings[5].id).toBe('just-test-2');
+
+    expect(headings[6].id).toBe('just--test-2-spaces-');
+    expect(headings[7].id).toBe('just-test-3');
+    expect(headings[8].id).toBe('just-test-4');
+    expect(headings[9].id).toBe('just-non-tags');
+    expect(headings[10].id).toBe('just-spaces');
+
+    expect(headings[11].id).toBe('just--weird-chars');
+    expect(headings[12].id).toBe('followed-by-weird-chars');
+    expect(headings[13].id).toBe('followed--space-then-weird-chars');
+    expect(headings[14].id).toBe('');
+    expect(headings[15].id).toBe('comment-');
+    expect(headings[16].id).toBe('hello-world');
+    expect(headings[17].id).toBe('hello-world-1');
   });
 });
