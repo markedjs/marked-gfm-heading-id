@@ -36,6 +36,21 @@ describe('marked-gfm-heading-id', () => {
 `);
   });
 
+  test('focusable', () => {
+    marked.use(gfmHeadingId({ focusable: true }));
+    const markdown = `
+# heading
+
+# heading
+`;
+
+    expect(marked(markdown)).toMatchInlineSnapshot(`
+"<h1 id="heading" tabindex="-1">heading</h1>
+<h1 id="heading-1" tabindex="-1">heading</h1>
+"
+`);
+  });
+
   test('reset for new marked call', () => {
     marked.use(gfmHeadingId());
     const markdown = `

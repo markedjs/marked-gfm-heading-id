@@ -4,6 +4,14 @@ import type {MarkedExtension, marked} from 'marked';
 interface GfmHeadingIdOptions {
   /** A string to prepend to all ids. Empty by default. */
   prefix?: string;
+
+  /**
+   * If set to `true`, it includes the attribute `tabindex="-1"` to make headings
+   * focusable for accessibility.
+   *
+   * @default false
+   */
+  focusable?: boolean;
 }
 
 /**

@@ -3,7 +3,7 @@ let slugger;
 
 let headings = [];
 
-export function gfmHeadingId({ prefix = '' } = {}) {
+export function gfmHeadingId({ prefix = '', focusable = false } = {}) {
   return {
     headerIds: false, // prevent deprecation warning; remove this once headerIds option is removed
     hooks: {
@@ -23,7 +23,7 @@ export function gfmHeadingId({ prefix = '' } = {}) {
         const heading = { level, text, id };
         headings.push(heading);
 
-        return `<h${level} id="${id}">${text}</h${level}>\n`;
+        return `<h${level} id="${id}"${focusable ? ' tabindex="-1"' : ''}>${text}</h${level}>\n`;
       }
     }
   };

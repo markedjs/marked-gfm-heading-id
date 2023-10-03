@@ -58,6 +58,7 @@ marked("# heading");
 
 ## `options`
 
-| option |  type  | default | description                     |
-|--------|--------|---------|:--------------------------------|
-| prefix | string |  `""`   | A string to prepend to all ids. |
+| option    | type    | default | description                                                                          |
+| --------- | ------- | ------- | :----------------------------------------------------------------------------------- |
+| prefix    | string  | `""`    | A string to prepend to all ids.                                                      |
+| focusable | boolean | `false` | Includes the attribute `tabindex="-1"` to make headings focusable for accessibility. |
