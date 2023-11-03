@@ -20,7 +20,7 @@ export function gfmHeadingId({ prefix = '' } = {}) {
           .trim()
           .replace(/<[!\/a-z].*?>/gi, '');
         const id = `${prefix}${slugger.slug(raw)}`;
-        const heading = { level, text, id };
+        const heading = { level, text: text.replace(/<[!\/a-z].*?>/gi, ''), id };
         headings.push(heading);
 
         return `<h${level} id="${id}">${text}</h${level}>\n`;
