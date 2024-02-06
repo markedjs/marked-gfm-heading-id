@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/markedjs/marked-gfm-heading-id#readme",
   "peerDependencies": {
-    "marked": ">=4 <12"
+    "marked": ">=4 <13"
   },
   "dependencies": {
     "github-slugger": "^2.0.0"
