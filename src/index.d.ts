@@ -32,3 +32,12 @@ export interface HeadingData {
  * @returns A string formatted the same as what would {@link gfmHeadingId} do.
  */
 export function getHeadingList(): HeadingData[];
+
+/**
+ * Returns a list of headings with the ids as computed by gfmHeadingId
+ *
+ * @param tokens a lexer output
+ * @param options Options for the extension
+ * @returns A string formatted the same as what would {@link gfmHeadingId} do.
+ */
+export function resetHeadings(): null;
