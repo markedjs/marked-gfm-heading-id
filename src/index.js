@@ -9,8 +9,7 @@ export function gfmHeadingId({ prefix = '', globalSlugs = false } = {}) {
     hooks: {
       preprocess(src) {
         if (!globalSlugs) {
-          headings = [];
-          slugger = new GithubSlugger();
+          resetHeadings();
         }
         return src;
       }
