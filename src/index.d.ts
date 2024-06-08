@@ -34,7 +34,7 @@ export interface HeadingData {
 export function getHeadingList(): HeadingData[];
 
 /**
- * Returns a list of headings with the ids as computed by gfmHeadingId
+ * Clears the stored list of Headings as computed by gfmHeadingId
  *
  * @param tokens a lexer output
  * @param options Options for the extension
