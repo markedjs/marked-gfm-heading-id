@@ -1,5 +1,5 @@
 import { marked } from 'marked';
-import { getHeadingList, gfmHeadingId } from '../src/index.js';
+import { getHeadingList, gfmHeadingId, resetHeadings } from '../src/index.js';
 
 describe('marked-gfm-heading-id', () => {
   beforeEach(() => {
@@ -148,5 +148,98 @@ describe('marked-gfm-heading-id', () => {
     expect(headings[15].id).toBe('comment-');
     expect(headings[16].id).toBe('hello-world');
     expect(headings[17].id).toBe('hello-world-1');
+  });
+
+  test('globalSlugs usage - No Clearing.', () => {
+    marked.use(gfmHeadingId({ globalSlugs: true }));
+    const markdownOne = `
+  # foo 1
+
+  # foo
+  
+  # foo
+  `;
+    const markdownTwo = `
+  # foo 1
+
+  # foo
+
+  # foo
+  `;
+    expect(marked(markdownOne)).toMatchInlineSnapshot(`
+"<h1 id="foo-1-1">foo 1</h1>
+<h1 id="foo-3">foo</h1>
+<h1 id="foo-4">foo</h1>
+"
+`);
+    expect(marked(markdownTwo)).toMatchInlineSnapshot(`
+"<h1 id="foo-1-2">foo 1</h1>
+<h1 id="foo-5">foo</h1>
+<h1 id="foo-6">foo</h1>
+"
+`);
+  });
+
+  test('globalSlugs usage - Pre-Clearing.', () => {
+    resetHeadings();
+    marked.use(gfmHeadingId({ globalSlugs: true }));
+    const markdownOne = `
+  # foo 1
+
+  # foo
+  
+  # foo
+  `;
+    const markdownTwo = `
+  # foo 1
+
+  # foo
+
+  # foo
+  `;
+    expect(marked(markdownOne)).toMatchInlineSnapshot(`
+"<h1 id="foo-1">foo 1</h1>
+<h1 id="foo">foo</h1>
+<h1 id="foo-2">foo</h1>
+"
+`);
+    expect(marked(markdownTwo)).toMatchInlineSnapshot(`
+"<h1 id="foo-1-1">foo 1</h1>
+<h1 id="foo-3">foo</h1>
+<h1 id="foo-4">foo</h1>
+"
+`);
+  });
+
+  test('globalSlugs usage - Pre and middle clearing.', () => {
+    resetHeadings();
+    marked.use(gfmHeadingId({ globalSlugs: true }));
+    const markdownOne = `
+  # foo 1
+
+  # foo
+  
+  # foo
+  `;
+    const markdownTwo = `
+  # foo 1
+
+  # foo
+
+  # foo
+  `;
+    expect(marked(markdownOne)).toMatchInlineSnapshot(`
+"<h1 id="foo-1">foo 1</h1>
+<h1 id="foo">foo</h1>
+<h1 id="foo-2">foo</h1>
+"
+`);
+    resetHeadings();
+    expect(marked(markdownTwo)).toMatchInlineSnapshot(`
+"<h1 id="foo-1">foo 1</h1>
+<h1 id="foo">foo</h1>
+<h1 id="foo-2">foo</h1>
+"
+`);
   });
 });
