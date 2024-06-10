@@ -65,5 +65,5 @@ marked("# heading");
 | option      |  type  | default | description                                   |
 |-------------|--------|---------|:----------------------------------------------|
 | prefix      | string |  `""`   | A string to prepend to all ids.               |
-| globalSlugs | bool   | false   | Track ids from one use of marked to the next. This ensures unique headers when parsing multiple markdown fragments and rendering the results as a single document. When set to false, the slugger and headers lists are cleared on every marked run.
+| globalSlugs | bool   | `false`   | Track ids from one use of marked to the next. This ensures unique headers when parsing multiple markdown fragments and rendering the results as a single document. When set to false, the slugger and headers lists are cleared on every marked run.
 
