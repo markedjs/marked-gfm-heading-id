@@ -27,9 +27,7 @@ export interface HeadingData {
 /**
  * Returns a list of headings with the ids as computed by gfmHeadingId
  *
- * @param tokens a lexer output
- * @param options Options for the extension
- * @returns A string formatted the same as what would {@link gfmHeadingId} do.
+ * @returns An array of HeadingData with level, text and id.
  */
 export function getHeadingList(): HeadingData[];
 
