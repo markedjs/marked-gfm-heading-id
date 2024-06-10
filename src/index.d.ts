@@ -35,9 +35,5 @@ export function getHeadingList(): HeadingData[];
 
 /**
  * Clears the stored list of Headings as computed by gfmHeadingId
- *
- * @param tokens a lexer output
- * @param options Options for the extension
- * @returns A string formatted the same as what would {@link gfmHeadingId} do.
  */
-export function resetHeadings(): null;
+export function resetHeadings(): void;
