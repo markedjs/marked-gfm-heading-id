@@ -1,15 +1,16 @@
 import GithubSlugger from 'github-slugger';
-let slugger;
+let slugger = new GithubSlugger();
 
 let headings = [];
 
-export function gfmHeadingId({ prefix = '' } = {}) {
+export function gfmHeadingId({ prefix = '', globalSlugs = false } = {}) {
   return {
     headerIds: false, // prevent deprecation warning; remove this once headerIds option is removed
     hooks: {
       preprocess(src) {
-        headings = [];
-        slugger = new GithubSlugger();
+        if (!globalSlugs) {
+          resetHeadings();
+        }
         return src;
       }
     },
@@ -31,4 +32,9 @@ export function gfmHeadingId({ prefix = '' } = {}) {
 
 export function getHeadingList() {
   return headings;
+}
+
+export function resetHeadings() {
+  headings = [];
+  slugger = new GithubSlugger();
 }

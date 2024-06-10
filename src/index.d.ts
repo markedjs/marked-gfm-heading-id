@@ -32,3 +32,8 @@ export interface HeadingData {
  * @returns A string formatted the same as what would {@link gfmHeadingId} do.
  */
 export function getHeadingList(): HeadingData[];
+
+/**
+ * Clears the stored list of Headings as computed by gfmHeadingId
+ */
+export function resetHeadings(): void;

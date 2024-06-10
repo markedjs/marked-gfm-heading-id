@@ -56,8 +56,14 @@ marked("# heading");
 // <h1 id="my-prefix-heading">heading</h1>
 ```
 
+## Clear Heading List
+
+`resetHeadings` is a function to purge the stored list of headings and reset the Slugger. This is only needed when the globalSlugs option ( see below) is set to true and you wish to reset the slugger and exportable Headers list.
+
 ## `options`
 
-| option |  type  | default | description                     |
-|--------|--------|---------|:--------------------------------|
-| prefix | string |  `""`   | A string to prepend to all ids. |
+| option      |  type  | default | description                                   |
+|-------------|--------|---------|:----------------------------------------------|
+| prefix      | string |  `""`   | A string to prepend to all ids.               |
+| globalSlugs | bool   | `false`   | Track ids from one use of marked to the next. This ensures unique headers when parsing multiple markdown fragments and rendering the results as a single document. When set to false, the slugger and headers lists are cleared on every marked run.
+
