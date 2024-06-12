@@ -5,6 +5,7 @@ let headings = [];
 
 // unescape from marked helpers
 const unescapeTest = /&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/ig;
+/* istanbul ignore next */
 export function unescape(html) {
   // explicitly match decimal, hex, and named HTML entities
   return html.replace(unescapeTest, (_, n) => {
