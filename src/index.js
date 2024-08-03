@@ -29,7 +29,7 @@ export function gfmHeadingId({ prefix = '', globalSlugs = false } = {}) {
           resetHeadings();
         }
         return src;
-      }
+      },
     },
     useNewRenderer: true,
     renderer: {
@@ -45,8 +45,8 @@ export function gfmHeadingId({ prefix = '', globalSlugs = false } = {}) {
         headings.push(heading);
 
         return `<h${level} id="${id}">${text}</h${level}>\n`;
-      }
-    }
+      },
+    },
   };
 }
 

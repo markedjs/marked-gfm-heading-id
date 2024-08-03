@@ -63,8 +63,8 @@ describe('marked-gfm-heading-id', () => {
         postprocess(html) {
           headings = getHeadingList();
           return html;
-        }
-      }
+        },
+      },
     });
 
     const markdown = `
