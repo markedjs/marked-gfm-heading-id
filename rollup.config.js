@@ -6,16 +6,16 @@ export default [
     output: {
       name: 'markedGfmHeadingId',
       file: 'lib/index.umd.js',
-      format: 'umd'
+      format: 'umd',
     },
-    plugins: [nodeResolve()]
+    plugins: [nodeResolve()],
   },
   {
     input: 'src/index.js',
     output: {
       file: 'lib/index.cjs',
-      format: 'cjs'
+      format: 'cjs',
     },
-    plugins: [nodeResolve()]
-  }
+    plugins: [nodeResolve()],
+  },
 ];

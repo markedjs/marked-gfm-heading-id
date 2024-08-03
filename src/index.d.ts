@@ -1,4 +1,5 @@
-import type {MarkedExtension, marked} from 'marked';
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+import type { MarkedExtension, marked } from 'marked';
 
 /** Options for configuring marked-gfm-heading-id extension */
 interface GfmHeadingIdOptions {
