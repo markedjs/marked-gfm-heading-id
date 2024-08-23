@@ -129,25 +129,40 @@ describe('marked-gfm-heading-id', () => {
 
     expect(headings.length).toBe(18);
     expect(headings[0].id).toBe('foo-1');
+    expect(headings[0].raw).toBe('foo 1');
     expect(headings[1].id).toBe('foo');
+    expect(headings[1].raw).toBe('foo');
     expect(headings[2].id).toBe('foo-2');
+    expect(headings[2].raw).toBe('foo');
     expect(headings[3].id).toBe('html-in-header');
+    expect(headings[3].raw).toBe('Html in header');
     expect(headings[4].id).toBe('just-test');
+    expect(headings[4].raw).toBe('just test');
     expect(headings[5].id).toBe('just-test-2');
-
+    expect(headings[5].raw).toBe('just test 2');
     expect(headings[6].id).toBe('just--test-2-spaces-');
+    expect(headings[6].raw).toBe('just  test 2 spaces ');
     expect(headings[7].id).toBe('just-test-3');
+    expect(headings[7].raw).toBe('just test 3');
     expect(headings[8].id).toBe('just-test-4');
+    expect(headings[8].raw).toBe('just test 4');
     expect(headings[9].id).toBe('just-non-tags');
+    expect(headings[9].raw).toBe('just non tags');
     expect(headings[10].id).toBe('just-spaces');
-
+    expect(headings[10].raw).toBe('just spaces');
     expect(headings[11].id).toBe('just--weird-chars');
+    expect(headings[11].raw).toBe('just #$% weird chars');
     expect(headings[12].id).toBe('followed-by-weird-chars');
+    expect(headings[12].raw).toBe('followed by#$% weird chars');
     expect(headings[13].id).toBe('followed--space-then-weird-chars');
+    expect(headings[13].raw).toBe('followed  space then weird chars');
     expect(headings[14].id).toBe('');
     expect(headings[15].id).toBe('comment-');
+    expect(headings[15].raw).toBe('comment ');
     expect(headings[16].id).toBe('hello-world');
+    expect(headings[16].raw).toBe('Hello world!');
     expect(headings[17].id).toBe('hello-world-1');
+    expect(headings[17].raw).toBe('Hello world!');
   });
 
   test('globalSlugs usage - No Clearing.', () => {
