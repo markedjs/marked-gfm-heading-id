@@ -103,6 +103,8 @@ describe('marked-gfm-heading-id', () => {
 # Hello **world!**
 
 # <samp>Hello <ins>world!</ins></samp>
+
+# just Cap<Tags with>spaces
 `;
 
     expect(marked(markdown)).toMatchInlineSnapshot(`
@@ -124,10 +126,11 @@ describe('marked-gfm-heading-id', () => {
 <h1 id="comment-">comment <!-- inside --></h1>
 <h1 id="hello-world">Hello <strong>world!</strong></h1>
 <h1 id="hello-world-1"><samp>Hello <ins>world!</ins></samp></h1>
+<h1 id="just-capspaces">just Cap<Tags with>spaces</h1>
 "
 `);
 
-    expect(headings.length).toBe(18);
+    expect(headings.length).toBe(19);
     expect(headings[0].id).toBe('foo-1');
     expect(headings[0].raw).toBe('foo 1');
     expect(headings[1].id).toBe('foo');
@@ -163,6 +166,8 @@ describe('marked-gfm-heading-id', () => {
     expect(headings[16].raw).toBe('Hello world!');
     expect(headings[17].id).toBe('hello-world-1');
     expect(headings[17].raw).toBe('Hello world!');
+    expect(headings[18].id).toBe('just-capspaces');
+    expect(headings[18].raw).toBe('just Capspaces');
   });
 
   test('globalSlugs usage - No Clearing.', () => {
