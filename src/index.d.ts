@@ -22,6 +22,7 @@ export function gfmHeadingId(options?: GfmHeadingIdOptions): MarkedExtension;
 export interface HeadingData {
   level: number;
   text: string;
+  raw: string;
   id: string;
 }
 

@@ -29,6 +29,7 @@ marked("# heading");
 The headings will each be an object with the following properties:
  - `text`: The rendered HTML for the heading
  - `level`: The heading level (1-7)
+ - `raw`: The raw text (stripped of HTML rendering if any; this is usefull for situation like `marked("# [heading](./link)");`)
  - `id`: The id given to the heading including any prefix
 
 ```js
@@ -42,7 +43,7 @@ marked.use(gfmHeadingId({prefix: "my-prefix-"}), {
 
 			return `
 <ul id="table-of-contents">
-	${headings.map(({id, text, level}) => `<li><a href="#${id}" class="h${level}">${text}</a></li>`)}
+	${headings.map(({id, raw, level}) => `<li><a href="#${id}" class="h${level}">${raw}</a></li>`)}
 </ul>
 ${html}`;
 		}

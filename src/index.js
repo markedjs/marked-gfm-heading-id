@@ -36,12 +36,11 @@ export function gfmHeadingId({ prefix = '', globalSlugs = false } = {}) {
       heading({ tokens, depth }) {
         const text = this.parser.parseInline(tokens);
         const raw = unescape(this.parser.parseInline(tokens, this.parser.textRenderer))
-          .toLowerCase()
           .trim()
           .replace(/<[!\/a-z].*?>/gi, '');
         const level = depth;
-        const id = `${prefix}${slugger.slug(raw)}`;
-        const heading = { level, text, id };
+        const id = `${prefix}${slugger.slug(raw.toLowerCase())}`;
+        const heading = { level, text, id, raw };
         headings.push(heading);
 
         return `<h${level} id="${id}">${text}</h${level}>\n`;
