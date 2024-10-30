@@ -29,9 +29,10 @@ export interface HeadingData {
 /**
  * Returns a list of headings with the ids as computed by gfmHeadingId
  *
+ * @param src The markdown to get headings for, defaults to the last headings
  * @returns An array of HeadingData with level, text and id.
  */
-export function getHeadingList(): HeadingData[];
+export function getHeadingList(src?: string): HeadingData[];
 
 /**
  * Clears the stored list of Headings as computed by gfmHeadingId

@@ -1,7 +1,7 @@
 import GithubSlugger from 'github-slugger';
 let slugger = new GithubSlugger();
-
-let headings = [];
+let lastSrc = '';
+let headings = new Map();
 
 // unescape from marked helpers
 const unescapeTest = /&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/ig;
@@ -26,8 +26,10 @@ export function gfmHeadingId({ prefix = '', globalSlugs = false } = {}) {
     hooks: {
       preprocess(src) {
         if (!globalSlugs) {
-          resetHeadings();
+          slugger = new GithubSlugger();
         }
+        headings.set(src, []);
+        this.options._thisSrc = lastSrc = src;
         return src;
       },
     },
@@ -41,7 +43,7 @@ export function gfmHeadingId({ prefix = '', globalSlugs = false } = {}) {
         const level = depth;
         const id = `${prefix}${slugger.slug(raw.toLowerCase())}`;
         const heading = { level, text, id, raw };
-        headings.push(heading);
+        headings.get(this.options._thisSrc).push(heading);
 
         return `<h${level} id="${id}">${text}</h${level}>\n`;
       },
@@ -49,11 +51,12 @@ export function gfmHeadingId({ prefix = '', globalSlugs = false } = {}) {
   };
 }
 
-export function getHeadingList() {
-  return headings;
+export function getHeadingList(src) {
+  return headings.get(src ?? lastSrc);
 }
 
 export function resetHeadings() {
-  headings = [];
   slugger = new GithubSlugger();
+  lastSrc = '';
+  headings = new Map();
 }

@@ -176,7 +176,7 @@ describe('marked-gfm-heading-id', () => {
   # foo 1
 
   # foo
-  
+
   # foo
   `;
     const markdownTwo = `
@@ -207,7 +207,7 @@ describe('marked-gfm-heading-id', () => {
   # foo 1
 
   # foo
-  
+
   # foo
   `;
     const markdownTwo = `
@@ -238,7 +238,7 @@ describe('marked-gfm-heading-id', () => {
   # foo 1
 
   # foo
-  
+
   # foo
   `;
     const markdownTwo = `
@@ -260,6 +260,65 @@ describe('marked-gfm-heading-id', () => {
 <h1 id="foo">foo</h1>
 <h1 id="foo-2">foo</h1>
 "
+`);
+  });
+
+  test('getHeadingList - multiple calls', () => {
+    marked.use(gfmHeadingId());
+    const markdownOne = `
+  # foo 1
+
+  # foo
+
+  # foo
+  `;
+    const markdownTwo = `
+  # foo 2
+
+  # foo
+
+  # foo
+  `;
+    marked(markdownOne);
+    marked(markdownTwo);
+
+    expect(getHeadingList(markdownOne)).toMatchInlineSnapshot(`
+[
+  {
+    "id": "foo-1",
+    "level": 1,
+    "text": "foo 1",
+  },
+  {
+    "id": "foo",
+    "level": 1,
+    "text": "foo",
+  },
+  {
+    "id": "foo-2",
+    "level": 1,
+    "text": "foo",
+  },
+]
+`);
+    expect(getHeadingList(markdownTwo)).toMatchInlineSnapshot(`
+[
+  {
+    "id": "foo-2",
+    "level": 1,
+    "text": "foo 2",
+  },
+  {
+    "id": "foo",
+    "level": 1,
+    "text": "foo",
+  },
+  {
+    "id": "foo-1",
+    "level": 1,
+    "text": "foo",
+  },
+]
 `);
   });
 });
