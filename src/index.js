@@ -35,7 +35,7 @@ export function gfmHeadingId({ prefix = '', globalSlugs = false } = {}) {
     renderer: {
       heading({ tokens, depth }) {
         const text = this.parser.parseInline(tokens);
-        const raw = unescape(this.parser.parseInline(tokens, this.parser.textRenderer))
+        const raw = unescape(text)
           .trim()
           .replace(/<[!\/a-z].*?>/gi, '');
         const level = depth;

@@ -176,7 +176,7 @@ describe('marked-gfm-heading-id', () => {
   # foo 1
 
   # foo
-  
+
   # foo
   `;
     const markdownTwo = `
@@ -207,7 +207,7 @@ describe('marked-gfm-heading-id', () => {
   # foo 1
 
   # foo
-  
+
   # foo
   `;
     const markdownTwo = `
@@ -238,7 +238,7 @@ describe('marked-gfm-heading-id', () => {
   # foo 1
 
   # foo
-  
+
   # foo
   `;
     const markdownTwo = `
