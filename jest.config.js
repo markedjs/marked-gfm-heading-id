@@ -19,6 +19,6 @@ export default {
     '\\.[jt]sx?$': 'babel-jest',
   },
   transformIgnorePatterns: [
-    'node_modules/(?!github-slugger)',
+    'node_modules/(?!github-slugger|marked)',
   ],
 };
