@@ -45,7 +45,7 @@
     "github-slugger": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.27.4",
+    "@babel/core": "^7.27.7",
     "@babel/preset-env": "^7.27.2",
     "@markedjs/eslint-config": "^1.0.12",
     "@rollup/plugin-node-resolve": "^16.0.1",
