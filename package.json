@@ -58,7 +58,7 @@
     "babel-jest": "^30.3.0",
     "eslint": "^10.9.0",
     "globals": "^17.11.0",
-    "jest-cli": "^30.4.2",
+    "jest-cli": "^30.5.0",
     "marked": "^18.0.10",
     "rollup": "^4.62.5",
     "semantic-release": "^25.0.9",
