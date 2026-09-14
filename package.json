@@ -59,7 +59,7 @@
     "eslint": "^10.10.0",
     "globals": "^17.12.0",
     "jest-cli": "^30.5.1",
-    "marked": "^18.0.11",
+    "marked": "^18.0.12",
     "rollup": "^4.63.1",
     "semantic-release": "^25.0.9",
     "tsd": "^0.33.0"
