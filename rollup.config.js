@@ -1,4 +1,5 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import copy from 'rollup-plugin-copy';
 
 export default [
   {
@@ -16,6 +17,11 @@ export default [
       file: 'lib/index.cjs',
       format: 'cjs',
     },
-    plugins: [nodeResolve()],
+    plugins: [
+      nodeResolve(),
+      copy({
+        targets: [{ src: 'src/index.d.ts', dest: 'lib', rename: 'index.d.cts' }],
+      }),
+    ],
   },
 ];
